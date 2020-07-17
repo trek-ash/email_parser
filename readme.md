@@ -1,27 +1,48 @@
+Here is the full thought process which I have used so far to tackle the given problem statement. <br />
 
-## Approaches So Far: 
+## Exploring the Problem Statement 
+
+Based on the problem statement, following features are required <br />
+1. Parser to extract information from the given email in HTML format.
+2. The algorithm should be scalable and simple.
+
+For parsing the email by one of our alogrithms, I have mentioned below the approaches I could come up with. 
+<br />
+
+## Brainstorming for the solution
+
+Currently, I am focusing to provide the solution for the particular sample email template shared. My approach is to make it working for a particular template, and then we can try to scale to further email templates. <br />
+To make the solution scalable, I could think of following: <br />
+1. Since some of the organisations have their email template, and they replace data in their templates to send emails to clients, so handling the templates might help us to tackle a greater range of emails from an organisation.
+2. To make it work for across different organisations templates, we might require inputs from the organisations or our representatives to point out the data and kind of data to extract from the email.
+3. So this leads to providing an interface(like zapier) where the person can select the data and type of data from the given email, and we can use this to make references for further emails in that format.
+4. When we represent the email in such interface, we can have our own elements or identifiers on the elements that will help us track the information for further templates. For e.g. While rendering email to the interface, we can add custom attributes to elements in the email. Once a person selects a word "Yash" as "Name" at a particular element. We can have an element around this text and give it attribute that reflects it is "Name". Also, our custom attributes on the parent element of this text will map the data which we have inside this parent element.( I can think of way to track the particular text as key based on the position of the word. Though we can try to improve on this if possible)
+5. For further emails of the same template, we can map the kept information from the previous email and 
+pre-highlight the texts to show to the user. If it's incorrrect, user can reselect the correct text for the data.
+
+Having said that, my approaches for the given template is summarised below: <br />
+
+## Approaches So Far 
 
 1. Parsing an email using products like zapier. <br />
-
-        OR <br />
-
-2. Make a software as cool as zapier acording to our needs. <br />
+2. Make a software like zapier acording to our needs. <br />
+3. Writing a program to handle the current template.
 
 Part 1 is straightforward as given in the description and documentation by Zapier.<br />
 
-For part 2, that is writing our own algorithm to extract details from email.<br />
+For part 2, making solution close to the approach shared above in scalable solution<br />
 
-### Progress in part 2:
+
+
+### Progress in part 3:
 
 #### Approach a
 1.  Try to parse the html such that elements can be accessed through selectors (Trying cheerio for the same, extracting the table element).
 2.  Convert the table element to json to parse the strings.
-2.  Access these elements and match to get names.
+2.  Access these elements and match to get the properties.
 
 Issues: 
 
 accessing the exact elements
 
-#### Approach b
-1.  Based on the comments in the sample html (Not sure if these comments come up everytime with right information)
 
